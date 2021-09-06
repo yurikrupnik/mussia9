@@ -1,7 +1,178 @@
 {
   "version": 2,
-  "projects": {},
+  "projects": {
+    "fe-react-app": {
+      "root": "apps/fe/react-app",
+      "sourceRoot": "apps/fe/react-app/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/web:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/fe/react-app",
+            "index": "apps/fe/react-app/src/index.html",
+            "main": "apps/fe/react-app/src/main.tsx",
+            "polyfills": "apps/fe/react-app/src/polyfills.ts",
+            "tsConfig": "apps/fe/react-app/tsconfig.app.json",
+            "assets": [
+              "apps/fe/react-app/src/favicon.ico",
+              "apps/fe/react-app/src/assets"
+            ],
+            "styles": ["apps/fe/react-app/src/styles.css"],
+            "scripts": [],
+            "webpackConfig": "@nrwl/react/plugins/webpack"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/fe/react-app/src/environments/environment.ts",
+                  "with": "apps/fe/react-app/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/web:dev-server",
+          "options": {
+            "buildTarget": "fe-react-app:build",
+            "hmr": true
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "fe-react-app:build:production",
+              "hmr": false
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/fe/react-app/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/fe/react-app"],
+          "options": {
+            "jestConfig": "apps/fe/react-app/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "fe-react-app-e2e": {
+      "root": "apps/fe/react-app-e2e",
+      "sourceRoot": "apps/fe/react-app-e2e/src",
+      "projectType": "application",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/fe/react-app-e2e/cypress.json",
+            "devServerTarget": "fe-react-app:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "fe-react-app:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/fe/react-app-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    },
+    "shared-data-types": {
+      "root": "libs/shared/data-types",
+      "sourceRoot": "libs/shared/data-types/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/shared/data-types/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/data-types"],
+          "options": {
+            "jestConfig": "libs/shared/data-types/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "shared-data-types-buildible": {
+      "root": "libs/shared/data-types-buildible",
+      "sourceRoot": "libs/shared/data-types-buildible/src",
+      "projectType": "library",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/workspace:tsc",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/shared/data-types-buildible",
+            "main": "libs/shared/data-types-buildible/src/index.ts",
+            "tsConfig": "libs/shared/data-types-buildible/tsconfig.lib.json",
+            "assets": ["libs/shared/data-types-buildible/*.md"]
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/shared/data-types-buildible/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/data-types-buildible"],
+          "options": {
+            "jestConfig": "libs/shared/data-types-buildible/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    }
+  },
   "cli": {
-    "defaultCollection": "@nrwl/workspace"
-  }
+    "defaultCollection": "@nrwl/react"
+  },
+  "generators": {
+    "@nrwl/react": {
+      "application": {
+        "style": "css",
+        "linter": "eslint",
+        "babel": true
+      },
+      "component": {
+        "style": "css"
+      },
+      "library": {
+        "style": "css",
+        "linter": "eslint"
+      }
+    }
+  },
+  "defaultProject": "fe-react-app"
 }

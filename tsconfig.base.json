@@ -14,7 +14,12 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@mussia9/shared/data-types": ["libs/shared/data-types/src/index.ts"],
+      "@mussia9/shared/data-types-buildible": [
+        "libs/shared/data-types-buildible/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
