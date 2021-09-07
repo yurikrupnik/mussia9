@@ -14,12 +14,7 @@
     "default": {
       "runner": "@nrwl/nx-cloud",
       "options": {
-        "cacheableOperations": [
-          "build",
-          "lint",
-          "test",
-          "e2e"
-        ],
+        "cacheableOperations": ["build", "lint", "test", "e2e"],
         "accessToken": "OGFiNTIwYzUtMDk2Ni00ZDYxLTgyYzQtYTkzODA5NDI1MDNmfHJlYWQtd3JpdGU="
       }
     }
@@ -33,26 +28,24 @@
     ]
   },
   "projects": {
+    "be-products": {
+      "tags": []
+    },
+    "be-users": {
+      "tags": []
+    },
     "button": {
-      "tags": [
-        "scope:ts"
-      ]
+      "tags": ["scope:ts"]
     },
     "fe-react-app": {
-      "tags": [
-        "scope:fe"
-      ]
+      "tags": ["scope:fe"]
     },
     "fe-react-app-e2e": {
       "tags": [],
-      "implicitDependencies": [
-        "fe-react-app"
-      ]
+      "implicitDependencies": ["fe-react-app"]
     },
     "shared-data-types": {
-      "tags": [
-        "scope:ts"
-      ]
+      "tags": ["scope:ts"]
     }
   }
 }

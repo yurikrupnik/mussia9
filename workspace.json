@@ -1,6 +1,129 @@
 {
   "version": 2,
   "projects": {
+    "be-products": {
+      "root": "apps/be/products",
+      "sourceRoot": "apps/be/products/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/be/products",
+            "main": "apps/be/products/src/main.ts",
+            "tsConfig": "apps/be/products/tsconfig.app.json",
+            "assets": ["apps/be/products/src/assets"],
+            "generatePackageJson": true
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/be/products/src/environments/environment.ts",
+                  "with": "apps/be/products/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "be-products:build"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/be/products/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/be/products"],
+          "options": {
+            "jestConfig": "apps/be/products/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "docker": {
+          "executor": "@nx-tools/nx-docker:build",
+          "options": {
+            "file": "apps/be/products/Dockerfile",
+            "push": true,
+            "tags": [
+              "eu.gcr.io/mussia8/be-products:latest",
+              "eu.gcr.io/mussia8/be-products:v1"
+            ]
+          }
+        },
+        "cloud": {
+          "executor": "@nrwl/workspace:run-commands",
+          "outputs": [],
+          "options": {
+            "command": "gcloud run deploy be-products --image eu.gcr.io/mussia8/be-products --platform managed  --allow-unauthenticated  --region europe-west1 --port 3333"
+          }
+        }
+      }
+    },
+    "be-users": {
+      "root": "apps/be/users",
+      "sourceRoot": "apps/be/users/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/be/users",
+            "main": "apps/be/users/src/main.ts",
+            "tsConfig": "apps/be/users/tsconfig.app.json",
+            "assets": ["apps/be/users/src/assets"],
+            "generatePackageJson": true
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/be/users/src/environments/environment.ts",
+                  "with": "apps/be/users/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "be-users:build"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/be/users/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/be/users"],
+          "options": {
+            "jestConfig": "apps/be/users/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "big-data-func1": "apps/big-data/func1",
     "button": {
       "root": "libs/button",
       "sourceRoot": "libs/button/src",
@@ -8,17 +131,13 @@
       "targets": {
         "build": {
           "executor": "@nrwl/web:package",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/libs/button",
             "tsConfig": "libs/button/tsconfig.lib.json",
             "project": "libs/button/package.json",
             "entryFile": "libs/button/src/index.ts",
-            "external": [
-              "react/jsx-runtime"
-            ],
+            "external": ["react/jsx-runtime"],
             "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
             "assets": [
               {
@@ -32,16 +151,12 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "libs/button/**/*.{ts,tsx,js,jsx}"
-            ]
+            "lintFilePatterns": ["libs/button/**/*.{ts,tsx,js,jsx}"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/button"
-          ],
+          "outputs": ["coverage/libs/button"],
           "options": {
             "jestConfig": "libs/button/jest.config.js",
             "passWithNoTests": true
@@ -68,9 +183,7 @@
       "targets": {
         "build": {
           "executor": "@nrwl/web:build",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/apps/fe/react-app",
             "index": "apps/fe/react-app/src/index.html",
@@ -81,9 +194,7 @@
               "apps/fe/react-app/src/favicon.ico",
               "apps/fe/react-app/src/assets"
             ],
-            "styles": [
-              "apps/fe/react-app/src/styles.css"
-            ],
+            "styles": ["apps/fe/react-app/src/styles.css"],
             "scripts": [],
             "webpackConfig": "@nrwl/react/plugins/webpack"
           },
@@ -118,7 +229,8 @@
             "buildTarget": "fe-react-app:build",
             "hmr": true,
             "port": 3000,
-            "open": true
+            "open": true,
+            "proxyConfig": "apps/fe/react-app/proxy.conf.json"
           },
           "configurations": {
             "production": {
@@ -130,16 +242,12 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/fe/react-app/**/*.{ts,tsx,js,jsx}"
-            ]
+            "lintFilePatterns": ["apps/fe/react-app/**/*.{ts,tsx,js,jsx}"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/fe/react-app"
-          ],
+          "outputs": ["coverage/apps/fe/react-app"],
           "options": {
             "jestConfig": "apps/fe/react-app/jest.config.js",
             "passWithNoTests": true
@@ -167,9 +275,7 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/fe/react-app-e2e/**/*.{js,ts}"
-            ]
+            "lintFilePatterns": ["apps/fe/react-app-e2e/**/*.{js,ts}"]
           }
         }
       }
@@ -182,16 +288,12 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "libs/shared/data-types/**/*.ts"
-            ]
+            "lintFilePatterns": ["libs/shared/data-types/**/*.ts"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/shared/data-types"
-          ],
+          "outputs": ["coverage/libs/shared/data-types"],
           "options": {
             "jestConfig": "libs/shared/data-types/jest.config.js",
             "passWithNoTests": true

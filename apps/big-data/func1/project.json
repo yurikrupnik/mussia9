@@ -1,0 +1,59 @@
+{
+  "root": "apps/big-data/func1",
+  "sourceRoot": "apps/big-data/func1/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:build",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/big-data/func1",
+        "main": "apps/big-data/func1/src/main.ts",
+        "tsConfig": "apps/big-data/func1/tsconfig.app.json",
+        "assets": ["apps/big-data/func1/src/assets"],
+        "generatePackageJson": true
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "apps/big-data/func1/src/environments/environment.ts",
+              "with": "apps/big-data/func1/src/environments/environment.prod.ts"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/node:execute",
+      "options": {
+        "buildTarget": "big-data-func1:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["apps/big-data/func1/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/big-data/func1"],
+      "options": {
+        "jestConfig": "apps/big-data/func1/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "deploy": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": [],
+      "options": {
+        "command": "gcloud functions deploy func1 --runtime nodejs14 --trigger-http --region europe-west1 --allow-unauthenticated --entry-point=func1 --source=dist/apps/big-data/func1"
+      }
+    }
+  },
+  "tags": []
+}

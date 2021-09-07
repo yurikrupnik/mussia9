@@ -1,0 +1,10 @@
+{
+  "/users": {
+    "target": "http://localhost:3333/api",
+    "secure": false
+  },
+  "/products": {
+    "target": "http://localhost:3334/api",
+    "secure": false
+  }
+}
