@@ -51,7 +51,7 @@
       "executor": "@nrwl/workspace:run-commands",
       "outputs": [],
       "options": {
-        "command": "gcloud functions deploy func1 --runtime nodejs14 --trigger-http --region europe-west1 --allow-unauthenticated --entry-point=func1 --source=dist/apps/big-data/func1"
+        "command": "gcloud functions deploy func1 --runtime nodejs14 --trigger-http --region europe-west1 --allow-unauthenticated --entry-point=func1 --source=dist/apps/big-data/func1 --project=mussia8"
       }
     }
   },
