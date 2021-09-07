@@ -8,13 +8,17 @@
       "targets": {
         "build": {
           "executor": "@nrwl/web:package",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/libs/button",
             "tsConfig": "libs/button/tsconfig.lib.json",
             "project": "libs/button/package.json",
             "entryFile": "libs/button/src/index.ts",
-            "external": ["react/jsx-runtime"],
+            "external": [
+              "react/jsx-runtime"
+            ],
             "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
             "assets": [
               {
@@ -28,15 +32,25 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/button/**/*.{ts,tsx,js,jsx}"]
+            "lintFilePatterns": [
+              "libs/button/**/*.{ts,tsx,js,jsx}"
+            ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/button"],
+          "outputs": [
+            "coverage/libs/button"
+          ],
           "options": {
             "jestConfig": "libs/button/jest.config.js",
             "passWithNoTests": true
+          }
+        },
+        "deploy": {
+          "executor": "ngx-deploy-npm:deploy",
+          "options": {
+            "access": "public"
           }
         }
       }
@@ -48,7 +62,9 @@
       "targets": {
         "build": {
           "executor": "@nrwl/web:build",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/apps/fe/react-app",
             "index": "apps/fe/react-app/src/index.html",
@@ -59,7 +75,9 @@
               "apps/fe/react-app/src/favicon.ico",
               "apps/fe/react-app/src/assets"
             ],
-            "styles": ["apps/fe/react-app/src/styles.css"],
+            "styles": [
+              "apps/fe/react-app/src/styles.css"
+            ],
             "scripts": [],
             "webpackConfig": "@nrwl/react/plugins/webpack"
           },
@@ -106,12 +124,16 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/fe/react-app/**/*.{ts,tsx,js,jsx}"]
+            "lintFilePatterns": [
+              "apps/fe/react-app/**/*.{ts,tsx,js,jsx}"
+            ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/fe/react-app"],
+          "outputs": [
+            "coverage/apps/fe/react-app"
+          ],
           "options": {
             "jestConfig": "apps/fe/react-app/jest.config.js",
             "passWithNoTests": true
@@ -139,7 +161,9 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/fe/react-app-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/fe/react-app-e2e/**/*.{js,ts}"
+            ]
           }
         }
       }
@@ -152,12 +176,16 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/shared/data-types/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/shared/data-types/**/*.ts"
+            ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/shared/data-types"],
+          "outputs": [
+            "coverage/libs/shared/data-types"
+          ],
           "options": {
             "jestConfig": "libs/shared/data-types/jest.config.js",
             "passWithNoTests": true
