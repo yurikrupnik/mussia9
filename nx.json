@@ -37,9 +37,6 @@
     },
     "shared-data-types": {
       "tags": ["scope:ts"]
-    },
-    "shared-data-types-buildible": {
-      "tags": ["scope:ts"]
     }
   }
 }

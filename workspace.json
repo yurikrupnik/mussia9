@@ -52,7 +52,9 @@
           "executor": "@nrwl/web:dev-server",
           "options": {
             "buildTarget": "fe-react-app:build",
-            "hmr": true
+            "hmr": true,
+            "port": 3000,
+            "open": true
           },
           "configurations": {
             "production": {
@@ -122,37 +124,6 @@
           }
         }
       }
-    },
-    "shared-data-types-buildible": {
-      "root": "libs/shared/data-types-buildible",
-      "sourceRoot": "libs/shared/data-types-buildible/src",
-      "projectType": "library",
-      "targets": {
-        "build": {
-          "executor": "@nrwl/workspace:tsc",
-          "outputs": ["{options.outputPath}"],
-          "options": {
-            "outputPath": "dist/libs/shared/data-types-buildible",
-            "main": "libs/shared/data-types-buildible/src/index.ts",
-            "tsConfig": "libs/shared/data-types-buildible/tsconfig.lib.json",
-            "assets": ["libs/shared/data-types-buildible/*.md"]
-          }
-        },
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["libs/shared/data-types-buildible/**/*.ts"]
-          }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/shared/data-types-buildible"],
-          "options": {
-            "jestConfig": "libs/shared/data-types-buildible/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
     }
   },
   "cli": {
@@ -172,6 +143,17 @@
         "style": "css",
         "linter": "eslint"
       }
+    },
+    "@nrwl/web:application": {
+      "style": "css",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/web:library": {
+      "style": "css",
+      "linter": "eslint",
+      "unitTestRunner": "jest"
     }
   },
   "defaultProject": "fe-react-app"
