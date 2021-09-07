@@ -4,6 +4,7 @@ import { ReactChildren } from "react";
 export interface ButtonProps {
   children: ReactChildren | string;
   age?: number;
+  era?: number;
 }
 
 export function Button(props: ButtonProps) {
