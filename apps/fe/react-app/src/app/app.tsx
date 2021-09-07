@@ -5,7 +5,7 @@ import star from "./star.svg";
 
 import { Route, Link } from "react-router-dom";
 
-import { Button } from '@mussia9/button';
+import { Button } from "@mussia9/button";
 
 export function App() {
   return (
@@ -15,7 +15,7 @@ export function App() {
         <h1>Welcome to react-app!</h1>
       </header>
       <main>
-        <Button />
+        <Button>button here</Button>
         <h2>Resources &amp; Tools</h2>
         <p>Thank you for using and showing some ♥ for Nx.</p>
         <div className="flex github-star-container">

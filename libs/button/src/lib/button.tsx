@@ -1,14 +1,13 @@
-import "./button.module.css";
+import MuiButton from "@material-ui/core/Button";
+import { ReactChildren } from "react";
 
-/* eslint-disable-next-line */
-export interface ButtonProps {}
+export interface ButtonProps {
+  children: ReactChildren | string;
+}
 
 export function Button(props: ButtonProps) {
-  return (
-    <div>
-      <h1>Welcome to Button!</h1>
-    </div>
-  );
+  const { children } = props;
+  return <MuiButton>{children}</MuiButton>;
 }
 
 export default Button;
