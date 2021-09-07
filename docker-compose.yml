@@ -4,21 +4,21 @@ services:
         image: mongo
         ports:
             - 27017:27017
-#    alfred:
-#        image: gcr.io/mussia8/alfred
-#        build:
-#            context: packages/ui/clients/alfred
-#            dockerfile: Dockerfile
-#        container_name: alfred
-#        environment:
-#            - DB_USER=admin
-#            - DB_PASSWORD=elmtmVSesRtpz3de
-#            - DB_URL=mongodb://db/mussia8
-#        ports:
-#            - 3000:3000
-#        command: npm run start
-#        depends_on:
-#            - db
+    alfred:
+        image: gcr.io/mussia8/be-users
+        build:
+            context: apps/be/users
+            dockerfile: Dockerfile
+        container_name: be-users
+        environment:
+            - DB_USER=admin
+            - DB_PASSWORD=elmtmVSesRtpz3de
+            - DB_URL=mongodb://db/mussia8
+        ports:
+            - 3000:3000
+        command: npm run start
+        depends_on:
+            - db
 #    #    #
 #    batman:
 #        image: gcr.io/mussia8/batman
