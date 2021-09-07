@@ -9,6 +9,9 @@
     "cz": "cz",
     "coverage": "echo a"
   },
+  "engines": {
+    "node": ">=16"
+  },
   "private": true,
   "devDependencies": {
     "@angular-devkit/architect": "^0.1202.4",
