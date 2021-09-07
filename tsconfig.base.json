@@ -16,6 +16,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@mussia9/button": ["libs/button/src/index.ts"],
       "@mussia9/shared/data-types": ["libs/shared/data-types/src/index.ts"]
     }
   },

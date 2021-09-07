@@ -1,10 +1,11 @@
-import styles from './app.module.css';
+import styles from "./app.module.css";
 
-import { ReactComponent as Logo } from './logo.svg';
-import star from './star.svg';
+import { ReactComponent as Logo } from "./logo.svg";
+import star from "./star.svg";
 
-import { Route, Link } from 'react-router-dom';
+import { Route, Link } from "react-router-dom";
 
+import { Button } from '@mussia9/button';
 
 export function App() {
   return (
@@ -14,6 +15,7 @@ export function App() {
         <h1>Welcome to react-app!</h1>
       </header>
       <main>
+        <Button />
         <h2>Resources &amp; Tools</h2>
         <p>Thank you for using and showing some ♥ for Nx.</p>
         <div className="flex github-star-container">
@@ -22,7 +24,7 @@ export function App() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            {' '}
+            {" "}
             If you like Nx, please give it a star:
             <div className="github-star-badge">
               <img src={star} className="material-icons" alt="" />
@@ -119,7 +121,7 @@ nx affected:e2e
         exact
         render={() => (
           <div>
-            This is the generated root route.{' '}
+            This is the generated root route.{" "}
             <Link to="/page-2">Click here for page 2.</Link>
           </div>
         )}

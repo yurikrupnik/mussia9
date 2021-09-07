@@ -28,6 +28,9 @@
     ]
   },
   "projects": {
+    "button": {
+      "tags": ["scope:ts"]
+    },
     "fe-react-app": {
       "tags": ["scope:fe"]
     },
