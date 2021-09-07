@@ -61,7 +61,16 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '16'
-
+      - name: Verify Dockerfile changed
+        uses: tj-actions/verify-changed-files@v5.5
+        id: changed_files
+        with:
+          files: |
+            package.json
+      - name: Dockerfile has changed rebuild and test
+        if: contains(steps.changed-files.outputs.modified_files, 'Dockerfile')
+        run: docker build .
+      - run: docker images
       - run: git config --global user.email krupnik.yuri@gmail.com && git config --global user.name yurikrupnik
       - run: echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} > .npmrc
 
