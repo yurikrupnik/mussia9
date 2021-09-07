@@ -6,7 +6,11 @@
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test",
-    "cz": "cz"
+    "cz": "cz",
+    "coverage": "echo a"
+  },
+  "engines": {
+    "node": ">=16"
   },
   "private": true,
   "devDependencies": {
