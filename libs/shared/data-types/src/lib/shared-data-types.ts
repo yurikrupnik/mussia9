@@ -1,7 +1,3 @@
-export function sharedDataTypes(): string {
-  return "shared-data-types";
-}
-
 export interface User {
   name: string;
   email: string;
