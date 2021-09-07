@@ -6,7 +6,7 @@ This library was generated with [Nx](https://nx.dev).
 
 Run `nx test button` to execute the unit tests via [Jest](https://jestjs.io).
 
-
+[![npm version](https://badge.fury.io/js/@mussia9%2Fbutton.svg)](https://badge.fury.io/js/@mussia9%2Fbutton)
 ###Package phobia
 
 ![install](https://badgen.net/packagephobia/install/@mussia9/button)
