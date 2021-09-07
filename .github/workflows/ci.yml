@@ -68,7 +68,7 @@ jobs:
           files: |
             package.json
       - name: Dockerfile has changed rebuild and test
-        if: contains(steps.changed-files.outputs.modified_files, 'Dockerfile')
+        if: contains(steps.changed-files.outputs.modified_files, 'package.json')
         run: docker build .
       - run: docker images
       - run: git config --global user.email krupnik.yuri@gmail.com && git config --global user.name yurikrupnik
