@@ -3,7 +3,7 @@ import { ReactChildren } from "react";
 
 export interface ButtonProps {
   children: ReactChildren | string;
-  agesss?: number;
+  ages?: number;
 }
 
 export function Button(props: ButtonProps) {
