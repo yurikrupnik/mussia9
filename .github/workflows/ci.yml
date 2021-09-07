@@ -38,6 +38,7 @@ jobs:
 
       - run: |-
           gcloud --quiet auth configure-docker
+      - run: gcloud config list
       - run: npx nx-cloud start-ci-run
       - run: npx nx affected --target=build --parallel --max-parallel=3 --prod
       - run: npx nx affected --target=test --parallel --max-parallel=2
@@ -83,6 +84,7 @@ jobs:
         with:
           project_id: mussia8
           service_account_key: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+      - run: gcloud config list
       - run: npx nx-cloud start-ci-run
       - run: npx nx affected --target=build --parallel --max-parallel=3 --base=origin/master
       - run: npx nx affected --target=test --parallel --max-parallel=2 --base=origin/master
