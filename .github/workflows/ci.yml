@@ -25,6 +25,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '16'
+      - uses: c-hive/gha-npm-cache@v1
       - run: npm ci
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@master
@@ -62,18 +63,6 @@ jobs:
         with:
           node-version: '16'
       - uses: c-hive/gha-npm-cache@v1
-#      - name: Cache node modules
-#        uses: actions/cache@v2
-#        env:
-#          cache-name: cache-node-modules
-#        with:
-#          # npm cache files are stored in `~/.npm` on Linux/macOS
-#          path: ~/.npm
-#          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('package-lock.json') }}
-#          restore-keys: |
-#            ${{ runner.os }}-build-${{ env.cache-name }}-
-#            ${{ runner.os }}-build-
-#            ${{ runner.os }}-
       - name: Verify Dockerfile changed
         uses: tj-actions/verify-changed-files@v5.5
         id: changed_files
@@ -94,7 +83,7 @@ jobs:
       - run: npx nx affected --target=lint --parallel --max-parallel=2 --base=origin/master
       - run: npx nx affected --target=e2e --parallel --max-parallel=3 --base=origin/master
       - run: NX_CLOUD_DISTRIBUTED_EXECUTION=false npx nx affected --target=version --parallel --max-parallel=3 --base=origin/master --patch
-#      - run: NX_CLOUD_DISTRIBUTED_EXECUTION=false npx nx affected --target=deploy --parallel --max-parallel=3 --base=origin/master
+      - run: NX_CLOUD_DISTRIBUTED_EXECUTION=false npx nx affected --target=deploy --parallel --max-parallel=3 --base=origin/master
       - run: npx nx-cloud stop-all-agents
   agents:
     runs-on: ubuntu-latest
