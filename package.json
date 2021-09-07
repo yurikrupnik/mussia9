@@ -86,9 +86,8 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-router-dom": "5.2.0",
-    "regenerator-runtime": "0.13.9",
-    "reflect-metadata": "^0.1.13",
     "regenerator-runtime": "0.13.7",
+    "reflect-metadata": "^0.1.13",
     "rxjs": "~6.6.3",
     "tslib": "^2.0.0"
   },

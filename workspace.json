@@ -124,6 +124,7 @@
       }
     },
     "big-data-func1": "apps/big-data/func1",
+    "big-data-publish-topic": "apps/big-data/publish-topic",
     "button": {
       "root": "libs/button",
       "sourceRoot": "libs/button/src",
@@ -160,12 +161,6 @@
           "options": {
             "jestConfig": "libs/button/jest.config.js",
             "passWithNoTests": true
-          }
-        },
-        "deploy": {
-          "executor": "ngx-deploy-npm:deploy",
-          "options": {
-            "access": "public"
           }
         },
         "version": {
