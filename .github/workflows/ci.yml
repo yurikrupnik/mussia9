@@ -64,7 +64,7 @@ jobs:
           node-version: '16'
       - uses: c-hive/gha-npm-cache@v1
       - name: Verify Dockerfile changed
-        uses: tj-actions/verify-changed-files@v5.5
+        uses: tj-actions/verify-changed-files@v5.7
         id: changed_files
         with:
           files: |
