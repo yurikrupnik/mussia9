@@ -16,8 +16,8 @@
   "devDependencies": {
     "@angular-devkit/architect": "^0.1202.4",
     "@angular-devkit/schematics": "^12.2.4",
-    "@babel/core": "7.12.13",
-    "@babel/preset-typescript": "7.12.13",
+    "@babel/core": "7.25.9",
+    "@babel/preset-typescript": "7.25.9",
     "@commitlint/cli": "12.1.4",
     "@commitlint/config-conventional": "12.1.4",
     "@jscutlery/semver": "^2.7.0",
